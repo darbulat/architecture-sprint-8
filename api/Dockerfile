@@ -5,10 +5,10 @@ FROM python:3.10-slim
 WORKDIR /app
 
 # Копируем файлы приложения в контейнер
-COPY . /app
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Устанавливаем зависимости
-RUN pip install --no-cache-dir fastapi uvicorn
+COPY . .
 
 # Открываем порт, на котором будет работать приложение
 EXPOSE 8000
